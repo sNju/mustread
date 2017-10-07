@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl',function($scope){
+  $scope.a=10;
+});
+
+app.directive('message1',function(){
+	return{
+    transclude:true,
+    templateUrl:'url.html',
+    controller:function($scope,$element,$attrs){
+      $scope.b=20;
+    }
+  }
+});
+
+</script>
+
+<body ng-app="myApp">
+  <div ng-controller="myCtrl">
+this is shared scope example we can share our scope data anywhere if we write something in directive scope we can access this scope in our parent controller this is called shared scope by using (scope) property this is false bydefault or we can embeded scope:false, property in our directive<br/><br/>
+
+  this is controller text.....a={{a}} and b={{b}}
+
+      <message1>
+        		<p>this is transclsion text......a={{a}} and b={{b}}</p>
+      </message1>
+</body>
+</html>

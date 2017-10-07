@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="ngToast.min.css">
+ <style>
+ 	.hi{
+ 		background-color: red !important;
+ 		color: black !important;
+ 	}
+ </style>
+<script src="angular.min.js"></script>
+<script src="ngToast.min.js"></script>
+<script src="angular-animate.min.js"></script>
+<script src="angular-sanitize.min.js"></script>
+<script>
+var app=angular.module('showApp',['ngToast']);
+
+// Set limit for ngToast display and its timeout
+app.config(['ngToastProvider', function(ngToast) {
+	ngToast.configure({
+
+		maxNumber: 5,
+		timeout:5000
+	});
+}]);
+
+app.controller('ctrl',function($scope,ngToast){
+
+	$scope.open=function(){
+	
+	// create a simple toast:
+	// ngToast.create('a toast message...');
+
+			// ngToast.create({
+			// 	content:"Please login before proceeding",
+			// 	className:"warning"
+			// })
+
+//create a toast with settings:
+		ngToast.create({
+		  className: 'hi',
+		  content: '<span class="hi">hiiiiiiiiiiiiiiii</span>'
+		});
+
+
+	}
+
+});
+
+
+//https://codepen.io/fusikky/pen/oXGGWO check this link there are many toast 
+
+</script>
+
+</head>
+
+<body ng-app="showApp" ng-controller="ctrl">
+
+<toast></toast>
+<button type="button" ng-click="open()">click here to show a ng-toast</button>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<h1 style="text-align: center;"> What are you looking for</h1>
+{{about}}
+<p><a ui-sref=".guitarImg">click here</a></p>
+<div ui-view></div>
+<button ng-click="showDiv = !showDiv">click here for guitar images</button><br/>
+<div ng-repeat="x in data" style="display: inline-block;" ng-show="showDiv">
+<img ng-src="{{x}}">
+</div>
+
+

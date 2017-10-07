@@ -1,0 +1,106 @@
+$$$$$$$$$$Location
+$location service parses the URL in the browser address bar.
+
+Methods
+absUrl();
+This method is getter only.
+
+Return full URL representation with all segments encoded according
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var absUrl = $location.absUrl();
+// => "http://example.com/#/some/path?foo=bar&baz=xoxo"
+
+
+url([url]);
+This method is getter / setter.
+
+Return URL (e.g. /path?a=b#hash) when called without any parameter.
+
+Change path, search and hash, when called with parameter and return $location.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var url = $location.url();
+// => "/some/path?foo=bar&baz=xoxo"
+
+protocol();
+This method is getter only.
+
+Return protocol of current URL.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var protocol = $location.protocol();
+// => "http"
+
+host();
+This method is getter only.
+
+Return host of current URL.
+
+Note: compared to the non-AngularJS version location.host which returns hostname:port, this returns the hostname portion only.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var host = $location.host();
+// => "example.com"
+
+// given URL http://user:password@example.com:8080/#/some/path?foo=bar&baz=xoxo
+host = $location.host();
+// => "example.com"
+host = location.host;
+// => "example.com:8080"
+
+
+port();
+This method is getter only.
+
+Return port of current URL.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var port = $location.port();
+// => 80
+
+
+path([path]);
+This method is getter / setter.
+
+Return path of current URL when called without any parameter.
+
+Change path when called with parameter and return $location.
+
+Note: Path should always begin with forward slash (/), this method will add the forward slash if it is missing.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var path = $location.path();
+// => "/some/path"
+
+
+search(search, [paramValue]);
+This method is getter / setter.
+
+Return search part (as object) of current URL when called without any parameter.
+
+Change search part when called with parameter and return $location.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var searchObject = $location.search();
+// => {foo: 'bar', baz: 'xoxo'}
+
+// set foo to 'yipee'
+$location.search('foo', 'yipee');
+// $location.search() => {foo: 'yipee', baz: 'xoxo'}
+
+
+hash([hash]);
+This method is getter / setter.
+
+Returns the hash fragment when called without any parameters.
+
+Changes the hash fragment when called with a parameter and returns $location.
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo#hashValue
+var hash = $location.hash();
+// => "hashValue"
+
+
+location.assign("http://www.mozilla.org");//redirect to a new url
+location.reload(true); //reloading the current page
+To reload the page after changing the URL, use the lower-level API, $window.location.href

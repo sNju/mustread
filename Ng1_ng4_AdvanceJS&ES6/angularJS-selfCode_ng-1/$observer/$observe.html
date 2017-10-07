@@ -1,0 +1,49 @@
+how to add class
+$scope.getclassnametype=function(status){
+		var classnamename="";
+		switch(status){
+			case "party": 
+			classname="partyrow";
+			break; 
+			case "profile": 
+			classname="";
+			break; 
+			default:
+			classname=""
+		}
+		return classname;
+}
+
+ng-class="getclassnametype(obj.party!=undefined?'party':'profile')"
+
+
+$observe() is a method on the Attributes object, and as such, it can only be used to observe/watch the value change of a DOM attribute. It is only used/called inside directives. Use $observe when you need to observe/watch a DOM attribute that contains interpolation (i.e., {{}}'s). E.g., attr1="Name: {{name}}", then in a directive: attrs.$observe('attr1', ...). (If you try scope.$watch(attrs.attr1, ...) it won't work because of the {{}}s -- you'll get undefined.) Use $watch for everything else.
+
+		
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+var app = angular.module("myApp", []);
+app.directive('sr',function(){
+
+return {
+
+        link: function(element, $scope, attrs){
+                attrs.$observe('sanju', function(value) {
+                                console.log(value)
+                    });
+            }
+    };
+})
+</script>
+
+<body ng-app="myApp">
+
+
+<input type="text" ng-model="value" >
+<sr sanju = "{{value}}">{{value}}</sr>
+
+</body>
+</html>
+

@@ -1,0 +1,203 @@
+
+
+Full stack Sr. Software Engineer with over 4 years of experience in Rapid Application Development on multiple stacks. 
+Specialize in value addition to product using user centric design. 
+Recognized by Industry giants for innovative solutions.
+
+
+In JavaScript null is "nothing". It is supposed to be something that doesn't exist.
+
+Unfortunately, in JavaScript, the data type of null is an object.
+
+You can consider it a bug in JavaScript that typeof null is an object. It should be null.
+You can empty an object by setting it to null:
+
+Example
+var person = null;         // Value is null, but type is still an object
+
+
+You can also empty an object by setting it to undefined:
+
+Example
+var person = undefined;   // Value is undefined, type is undefined
+
+
+Difference Between Undefined and Null
+typeof undefined           // undefined
+typeof null                // object
+null === undefined         // false
+null == undefined          // true
+
+
+Function parameters are the names listed in the function definition.
+
+Function arguments are the real values received by the function when it is invoked.
+
+Inside the function, the arguments (the parameters) behave as local variables.
+
+A Function is much the same as a Procedure or a Subroutine, in other programming languages.
+
+
+
+Function Return
+When JavaScript reaches a return statement, the function will stop executing.
+
+If the function was invoked from a statement, JavaScript will "return" to execute the code after the invoking statement.
+
+Functions often compute a return value. The return value is "returned" back to the "caller":
+
+Methods are actions that can be performed on objects.
+
+Methods are stored in properties as function definitions.
+
+JavaScript objects are containers for named values called properties or methods.
+
+A method is actually a function definition stored as a property value.
+
+Do Not Declare Strings, Numbers, and Booleans as Objects!
+When a JavaScript variable is declared with the keyword "new", the variable is created as an object:
+
+Avoid String, Number, and Boolean objects. They complicate your code and slow down execution speed.
+
+Scope is the set of variables you have access to.
+
+JavaScript Scope
+In JavaScript, objects and functions are also variables.
+
+In JavaScript, scope is the set of variables, objects, and functions you have access to.
+
+JavaScript has function scope: The scope changes inside functions.
+
+Do NOT create global variables unless you intend to.
+
+In "Strict Mode" automatically global variables will fail.
+
+
+In HTML, the global scope is the window object. All global variables belong to the window object.
+
+Your global variables (or functions) can overwrite window variables (or functions).
+Any function, including the window object, can overwrite your global variables and functions.
+
+Never Create Strings as objects.
+JavaScript objects cannot be compared.
+
+Note the difference between (x==y) and (x===y).
+Comparing two JavaScript objects will always return false.
+
+All string methods return a new string. They don't modify the original string.
+Formally said: Strings are immutable: Strings cannot be changed, only replaced.
+
+The indexOf() method returns the index of (the position of) the first occurrence of a specified text in a string:
+
+The lastIndexOf() method returns the index of the last occurrence of a specified text in a string:
+
+Both the indexOf(), and the lastIndexOf() methods return -1 if the text is not found.
+
+JavaScript counts positions from zero.
+0 is the first position in a string, 1 is the second, 2 is the third ...
+
+Both methods accept a second parameter as the starting position for the search.
+
+The search() method searches a string for a specified value and returns the position of the match:
+
+The two methods, indexOf() and search(), are equal.
+
+They accept the same arguments (parameters), and they return the same value.
+
+The two methods are equal, but the search() method can take much more powerful search values.
+
+Extracting String Parts
+There are 3 methods for extracting a part of a string:
+
+slice(start, end)
+substring(start, end)
+substr(start, length)
+
+slice() extracts a part of a string and returns the extracted part in a new string.
+
+The method takes 2 parameters: the starting index (position), and the ending index (position).
+If a parameter is negative, the position is counted from the end of the string.
+
+If you omit the second parameter, the method will slice out the rest of the string:
+
+substring() is similar to slice().
+
+The difference is that substring() cannot accept negative indexes.
+
+substr() is similar to slice().
+
+The difference is that the second parameter specifies the length of the extracted part.
+
+If the first parameter is negative, the position counts from the end of the string.
+
+The second parameter can not be negative, because it defines the length.
+
+If you omit the second parameter, substr() will slice out the rest of the string.
+
+The replace() method replaces a specified value with another value in a string:
+The replace() method can also take a regular expression as the search value.
+
+By default, the replace() function replaces only the first match. To replace all matches, use a regular expression with a g flag (for global match):
+
+The replace() method does not change the string it is called on. It returns a new string.
+
+The concat() method can be used instead of the plus operator. These two lines do the same:
+var text = "Hello" + " " + "World!";
+var text = "Hello".concat(" ", "World!");
+++++++++++++++++++
+All string methods return a new string. They don't modify the original string.
+Formally said: Strings are immutable: Strings cannot be changed, only replaced.
++++++++++++
+
+Extracting String Characters
+There are 2 safe methods for extracting string characters:
+
+charAt(position)
+charCodeAt(position)
+
+The charAt() method returns the character at a specified index (position) in a string:
+var str = "HELLO WORLD";
+str.charAt(0);            // returns H
+
+The charCodeAt() method returns the unicode of the character at a specified index in a string:
+var str = "HELLO WORLD";
+str.charCodeAt(0);         // returns 72
+
+------------------
+Converting a String to an Array
+A string can be converted to an array with the split() method:
+var txt = "a,b,c,d,e";   // String
+txt.split(",");          // Split on commas //mean 1 will be a 2 will be b 3 will be c
+txt.split(" ");          // Split on spaces //all will be one only
+txt.split("|");          // Split on pipe
+
+If the separator is omitted, the returned array will contain the whole string in index [0].
+If the separator is "", the returned array will be an array of single characters:
+--------------Number---------------
+JavaScript has only one type of number.
+
+Numbers can be written with, or without, decimals.
+JavaScript Numbers are Always 64-bit Floating Point
+
+Never write a number with a leading zero (like 07).
+Some JavaScript versions interpret numbers as octal if they are written with a leading zero.
+
+
+Infinity
+Infinity (or -Infinity) is the value JavaScript will return if you calculate a number outside the largest possible number.
+
+Division by 0 (zero) also generates Infinity:
+Example
+var x =  2 / 0;          // x will be Infinity
+var y = -2 / 0;          // y will be -Infinity
+
+Infinity is a number: typeof Infinity returns number.
+Example
+typeof Infinity;        // returns "number"
+
+NaN - Not a Number
+NaN is a JavaScript reserved word indicating that a number is not a legal number.
+
+Trying to do arithmetic with a non-numeric string will result in NaN (Not a Number):
+Example
+var x = 100 / "Apple";  // x will be NaN (Not a Number)

@@ -1,0 +1,20 @@
+<script>
+
+var a={
+	a1:2,
+
+	b:function(){
+		return this.a1;
+	}
+
+}
+
+var x=function(b){
+return a.b() + b;
+}
+
+var z=x.call(a,5);
+console.log(z);
+
+
+</script>

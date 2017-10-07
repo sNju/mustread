@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script>
+var app = angular.module('myApp',[]);
+app.controller("ProductController", function ($scope) {
+    $scope.product1 = {
+        name: 'Phone',
+        price: '100',
+        stock: true
+    };
+    $scope.product2 = {
+        name: 'TV',
+        price: '1000',
+        stock: false
+    };
+    $scope.product3 = {
+        name: 'Laptop',
+        price: '800',
+        stock: false
+    };
+ 
+    $scope.ShowData = function () {
+        alert("Display Data");
+    }
+ 
+});
+
+app.directive('inventoryProduct', function () {
+    return {
+        restrict: 'E',
+        scope: {
+            data: '&',         
+        },
+        template: '<p ng-click="data()">click here now</p>'
+    };
+});
+</script>
+
+<body ng-app="myApp">
+
+<div ng-controller="ProductController">
+            <inventory-product data="ShowData()"><inventory-product>
+ <div>
+
+
+</body>
+</html>

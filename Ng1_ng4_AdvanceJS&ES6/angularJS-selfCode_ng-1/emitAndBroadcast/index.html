@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<script type="text/javascript" src = "js.js"></script>
+
+<head>
+
+	<title></title>
+
+</head>
+
+<body ng-app = "myApp">
+
+<div ng-controller = "accountCnt">
+
+	<span>Current Balance: {{accountBal | currency }}</span> 
+
+<br>
+
+	<div ng-controller = "depositCntrl">
+
+		<p>
+
+			<input type="text" ng-model="amount" />
+
+		</p>
+
+		<p>
+
+			<input type="button" value="Deposit" ng-click = "deposit()" />
+
+		</p>
+
+
+
+			<div ng-controller = "withdrawCntrl">
+
+				<p>
+
+					<input type="text" ng-model="amount" />
+
+					<span class="error" ng-if="validationError">{{validationError}}</span> 
+
+				</p>
+
+				<p>
+
+					<input type="button" value="Withdraw" ng-click="withdraw()" />
+
+				</p>
+
+			</div>
+
+	</div>	
+
+</div>
+
+
+
+</body>
+
+</html>

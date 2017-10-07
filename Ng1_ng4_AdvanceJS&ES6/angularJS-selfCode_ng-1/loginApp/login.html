@@ -1,0 +1,54 @@
+logged successfully 
+
+<div ng-controller="httpCtrl">
+<ul>
+	<h1>name of programmer and age</h1>
+	<p>
+Global Search: <input type="text" ng-model="findName.$" placeholder="search the below content"></br>
+Name Search: <input type="text" ng-model="findName.Name" placeholder="search the below content"></br>
+Roll No Search: <input type="text" ng-model="findName.RollNo" placeholder="search the below content"></br>
+</p>
+	<li ng-repeat="x in data | filter:findName">
+	Name: {{x.Name}} and RollNo: {{x.RollNo}} and age {{x.Percentage}};
+	</li>
+</ul>
+</div>
+
+<div ng-controller="serviceCtrl">
+<input type="button" ng-click="generateRandomFromService()" value="get random number using service">
+randomNumber: {{randomNumber}} and Name: {{getName}}
+
+<input type="button" ng-click="generateRandomFromFactory()" value="get random number using factory">
+randomNumber: {{randomNumberFac}} and Name: {{getNameFac}}
+
+<p>date is comming from provider service : {{getMessageFromProvider}}</p>
+</div>
+
+
+<div ng-controller="addTask">
+<style>
+span.done-true{
+color:red;
+font-size: italic;
+text-decoration: line-through;
+}
+span[contenteditable="true"]{
+background:grey;
+padding:3px; 
+}
+</style>
+<h1 style="text-align: center;"> Add a Task</h1>
+<input type="text" style="margin: 0 auto;display: block;width: 300px;" ng-model="task" ng-keyup="searchEnter()">
+
+<div id="taskToShow" ng-show="tasks != '' ">
+	<ul>
+		<li ng-repeat="onetask in tasks track by $index">
+		<input type="checkbox" ng-model="onetask.status">
+		<span class="done-{{onetask.status}}" contenteditable="false" ng-dblclick="contentEdit(onetask.taskMessage)" ng-keydown="enterAgain(onetask.taskMessage)" ng-model="onetask.taskMessage">
+		{{onetask.taskMessage}}
+		</span>
+		</li>
+	</ul>
+</div>
+
+</div>

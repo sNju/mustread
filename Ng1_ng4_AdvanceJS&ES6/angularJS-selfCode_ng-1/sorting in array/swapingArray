@@ -1,0 +1,51 @@
+var numbers = [12, 10, 15, 11, 14, 13, 16];
+
+function bubbleSort(array) {
+
+var next2last = array.length - 1,
+
+holder,
+
+swapOccured,
+
+index,
+
+nextIndex;
+
+array.some(function () {
+
+swapOccured = false;
+
+for (index = 0; index < next2last; index += 1) {
+
+nextIndex = index + 1;
+
+if (array[index] > array[nextIndex]) {
+
+holder = array[nextIndex];
+
+array[nextIndex] = array[index];
+
+array[index] = holder;
+
+swapOccured = true;
+
+}
+
+}
+
+if (!swapOccured) {
+
+return true;
+
+}
+
+return false;
+
+});
+
+}
+
+bubbleSort(numbers);
+
+console.log(numbers);

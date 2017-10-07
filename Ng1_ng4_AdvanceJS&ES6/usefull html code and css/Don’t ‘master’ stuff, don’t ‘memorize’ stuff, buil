@@ -1,0 +1,28 @@
+Don’t ‘master’ stuff, don’t ‘memorize’ stuff, build stuff.
+
+
+
+https://playtictactoe.org/
+
+
+
+
+<a href="#" ng-click="showDiv=true">show</a>
+<div id="d"></div>
+<div ng-include="showDiv ? 'my-customer.html': ''">
+
+
+The $rootScope Object has the identical $emit, $broadcast, $on methods, but they work slightly differently to how $scope implements them. As $rootScope has no $parent, using an $emit would be pointless, right? Nope, instead, $rootScope.$emit will fire an event for all $rootScope.$on listeners only. The interesting part is that $rootScope.$broadcast will notify all $rootScope.$on as well as $scope.$on listeners, subtle but very important difference if you want to avoid issues in your application.
+
+
+
+
+
+check out this task
+
+http://plnkr.co/edit/am6IDw?p=preview
+
+https://codepen.io/CarterTsai/pen/eBEyD
+
+
+http://mycodingtricks.com/snippets/javascript/

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Back To Top Button</title>
+
+<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script type='text/javascript'>
+$(document).ready(function(){ 
+	$(window).scroll(function(){ 
+		if ($(this).scrollTop() > 100) { 
+			$('#scroll').fadeIn(); 
+		} else { 
+			$('#scroll').fadeOut(); 
+		} 
+	}); 
+	$('#scroll').click(function(){ 
+		$("html, body").animate({ scrollTop: 0 }, 600); 
+		return false; 
+	}); 
+});
+</script>
+<style type="text/css">
+#scroll {
+position:fixed;
+right:10px;
+bottom:10px;
+cursor:pointer;
+width:50px;
+height:50px;
+background-color:#9660b8;
+text-indent:-9999px;
+display:none;
+-webkit-border-radius:60px;
+-moz-border-radius:60px;
+border-radius:60px
+}
+#scroll span {
+position:absolute;
+top:50%;
+left:50%;
+margin-left:-8px;
+margin-top:-12px;
+height:0;
+width:0;
+border:8px solid transparent;
+border-bottom-color:#ffffff
+}
+#scroll:hover {
+background-color:#a679c3;
+opacity:1;filter:"alpha(opacity=100)";
+-ms-filter:"alpha(opacity=100)";}
+</style>
+
+</head>
+
+<body>
+<a href="#" id="scroll" title="Scroll to Top" style="display: none;"><span></span></a>
+
+<h1>jQuery Back to Top Button</h1>
+<h3>Scroll down the page, the BackToTop button would be appear at the right side corner. Once you click on this button, the page would be scrolling up to the top.</h3>
+<!-- Demo Text -->
+<p>Cras dui massa, dapibus eget nulla gravida, tempus vestibulum neque. Vestibulum ut euismod tellus, id facilisis velit. Sed vitae nunc at ex lobortis sagittis sit amet a ex. Mauris mollis tellus et tortor euismod scelerisque. In non facilisis lorem, non egestas nisl. Suspendisse potenti. Nunc in enim sed ipsum volutpat ultricies. Curabitur porta eros eget lacus maximus iaculis. Nulla ac sapien fermentum, lobortis risus eget, pellentesque eros. Aliquam erat volutpat. Vestibulum nulla erat, pulvinar nec condimentum sed, faucibus at velit.</p>
+
+<p>Mauris eleifend facilisis pharetra. Nullam vestibulum malesuada dictum. Nulla blandit sit amet massa nec tempor. Vestibulum sit amet urna ut eros placerat vehicula in id felis. Curabitur quis imperdiet urna. Sed dictum suscipit velit, eget bibendum lectus fermentum sed. Nunc eget quam enim. Vivamus eget nisi non erat rhoncus accumsan vel vitae neque. Nam cursus felis sed elementum consectetur. Vivamus mattis, felis vel eleifend luctus, nisl ante dictum massa, sit amet semper lorem odio consectetur risus.</p>
+
+<p>Aliquam erat volutpat. Cras consequat lacus nec enim imperdiet convallis. Quisque tincidunt et mi quis euismod. Aenean faucibus tincidunt libero, vitae vulputate ante commodo vel. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque laoreet est eu lectus aliquam iaculis a nec enim. Etiam aliquet mi ac lectus laoreet luctus. Nulla quis ante nisl. Ut sit amet nibh non odio suscipit posuere. Donec ac tellus quis ante efficitur tincidunt et sit amet neque. Integer aliquet neque eget tellus luctus gravida. Sed maximus lobortis cursus. Praesent et felis ante. Mauris massa justo, tristique at lacus ut, consectetur ultrices purus. Vivamus et ex nec sem tempor tincidunt. Suspendisse elementum sem erat, sed euismod felis sodales et.</p>
+
+<p>Vivamus ut massa quis risus bibendum condimentum. Nunc commodo libero eu tincidunt facilisis. Morbi ut tellus eu lacus interdum egestas. Pellentesque faucibus porttitor lacus, vitae efficitur nulla suscipit sed. Aenean dapibus magna quis dui blandit, nec aliquam tellus consectetur. Curabitur porttitor lacus nec quam finibus, quis iaculis ante sodales. Ut egestas varius arcu, id condimentum lorem congue a. Duis in tellus eget leo lobortis placerat vel sed tortor. Curabitur eu risus mi.</p>
+
+<p>Proin non odio laoreet, sollicitudin nulla quis, laoreet velit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi vel tellus a libero venenatis pharetra. Praesent ac bibendum tortor. In varius metus quis vehicula auctor. Nullam viverra id odio vel convallis. Sed tortor est, aliquam quis suscipit ac, tempus nec purus. Curabitur euismod congue dui, id rutrum quam dictum sit amet. In a metus maximus, condimentum lorem volutpat, feugiat lectus.</p>
+<p>Mauris eleifend facilisis pharetra. Nullam vestibulum malesuada dictum. Nulla blandit sit amet massa nec tempor. Vestibulum sit amet urna ut eros placerat vehicula in id felis. Curabitur quis imperdiet urna. Sed dictum suscipit velit, eget bibendum lectus fermentum sed. Nunc eget quam enim. Vivamus eget nisi non erat rhoncus accumsan vel vitae neque. Nam cursus felis sed elementum consectetur. Vivamus mattis, felis vel eleifend luctus, nisl ante dictum massa, sit amet semper lorem odio consectetur risus.</p>
+
+<p>Aliquam erat volutpat. Cras consequat lacus nec enim imperdiet convallis. Quisque tincidunt et mi quis euismod. Aenean faucibus tincidunt libero, vitae vulputate ante commodo vel. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque laoreet est eu lectus aliquam iaculis a nec enim. Etiam aliquet mi ac lectus laoreet luctus. Nulla quis ante nisl. Ut sit amet nibh non odio suscipit posuere. Donec ac tellus quis ante efficitur tincidunt et sit amet neque. Integer aliquet neque eget tellus luctus gravida. Sed maximus lobortis cursus. Praesent et felis ante. Mauris massa justo, tristique at lacus ut, consectetur ultrices purus. Vivamus et ex nec sem tempor tincidunt. Suspendisse elementum sem erat, sed euismod felis sodales et.</p>
+
+<p>Vivamus ut massa quis risus bibendum condimentum. Nunc commodo libero eu tincidunt facilisis. Morbi ut tellus eu lacus interdum egestas. Pellentesque faucibus porttitor lacus, vitae efficitur nulla suscipit sed. Aenean dapibus magna quis dui blandit, nec aliquam tellus consectetur. Curabitur porttitor lacus nec quam finibus, quis iaculis ante sodales. Ut egestas varius arcu, id condimentum lorem congue a. Duis in tellus eget leo lobortis placerat vel sed tortor. Curabitur eu risus mi.</p>
+
+<p>Proin non odio laoreet, sollicitudin nulla quis, laoreet velit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi vel tellus a libero venenatis pharetra. Praesent ac bibendum tortor. In varius metus quis vehicula auctor. Nullam viverra id odio vel convallis. Sed tortor est, aliquam quis suscipit ac, tempus nec purus. Curabitur euismod congue dui, id rutrum quam dictum sit amet. In a metus maximus, condimentum lorem volutpat, feugiat lectus.</p>
+<p>Mauris eleifend facilisis pharetra. Nullam vestibulum malesuada dictum. Nulla blandit sit amet massa nec tempor. Vestibulum sit amet urna ut eros placerat vehicula in id felis. Curabitur quis imperdiet urna. Sed dictum suscipit velit, eget bibendum lectus fermentum sed. Nunc eget quam enim. Vivamus eget nisi non erat rhoncus accumsan vel vitae neque. Nam cursus felis sed elementum consectetur. Vivamus mattis, felis vel eleifend luctus, nisl ante dictum massa, sit amet semper lorem odio consectetur risus.</p>
+
+<p>Aliquam erat volutpat. Cras consequat lacus nec enim imperdiet convallis. Quisque tincidunt et mi quis euismod. Aenean faucibus tincidunt libero, vitae vulputate ante commodo vel. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque laoreet est eu lectus aliquam iaculis a nec enim. Etiam aliquet mi ac lectus laoreet luctus. Nulla quis ante nisl. Ut sit amet nibh non odio suscipit posuere. Donec ac tellus quis ante efficitur tincidunt et sit amet neque. Integer aliquet neque eget tellus luctus gravida. Sed maximus lobortis cursus. Praesent et felis ante. Mauris massa justo, tristique at lacus ut, consectetur ultrices purus. Vivamus et ex nec sem tempor tincidunt. Suspendisse elementum sem erat, sed euismod felis sodales et.</p>
+
+<p>Vivamus ut massa quis risus bibendum condimentum. Nunc commodo libero eu tincidunt facilisis. Morbi ut tellus eu lacus interdum egestas. Pellentesque faucibus porttitor lacus, vitae efficitur nulla suscipit sed. Aenean dapibus magna quis dui blandit, nec aliquam tellus consectetur. Curabitur porttitor lacus nec quam finibus, quis iaculis ante sodales. Ut egestas varius arcu, id condimentum lorem congue a. Duis in tellus eget leo lobortis placerat vel sed tortor. Curabitur eu risus mi.</p>
+
+<p>Proin non odio laoreet, sollicitudin nulla quis, laoreet velit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi vel tellus a libero venenatis pharetra. Praesent ac bibendum tortor. In varius metus quis vehicula auctor. Nullam viverra id odio vel convallis. Sed tortor est, aliquam quis suscipit ac, tempus nec purus. Curabitur euismod congue dui, id rutrum quam dictum sit amet. In a metus maximus, condimentum lorem volutpat, feugiat lectus.</p>
+
+</body>
+</html>

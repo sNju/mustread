@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<script>
+// var numbers=[5,6,8,2,3,4,5,9,1]
+// function convertAscend(array){
+// var lengthlastNext=array.length-1;
+// array.forEach(function(){
+// for(i=0;i<lengthlastNext;i++){
+//   var nextIndex=i+1
+//   if(array[i]> array[nextIndex]){
+//     var holdArray=array[nextIndex];
+//     array[nextIndex]=array[i];
+//     array[i]=holdArray;
+//   }
+// }
+
+// })
+// }
+// convertAscend(numbers)
+// console.log(numbers)
+
+//Bubble sort n2 times takes long time worst
+var bubbleArrayData=[4,5,2,3,1,7,8,9,10,23,12,22,13,14,455]
+function bubbleSort(data){
+  var len=data.length;
+  do{
+    for (var i=0;i<len-1;i++){
+      if(data[i]> data[i+1]){
+          var tmp=data[i];
+           data[i]=data[i+1];
+           data[i+1]=tmp;
+           }
+      }
+    }while(len--);
+    
+    return data;
+}
+console.log(bubbleSort(bubbleArrayData));
+
+
+
+//merge sort recursion funtion in javascript we called clouser, 
+var mergeArrayData=[4,5,2,3,1,7,8,9];
+function mergeSort(data){
+  if(data.length < 2){
+    return data;
+
+  }
+  var midPoint = Math.round(data.length /2);
+  return merge(
+          mergeSort(data.slice(0,midPoint)),
+          mergeSort(data.slice(midPoint))
+        );
+}
+function merge(left,right){
+var out =[];
+
+    while(left.length && right.length){
+        out.push(left[0] < right[0] ? left.shift() : right.shift())
+      }
+    while(left.length){
+      out.push(left.shift())
+    }
+    while(right.length){
+      out.push(right.shift())
+    }
+return out;
+}
+console.log(mergeSort(mergeArrayData));
+
+
+//access javascript object property mame using Object.keys()
+var myObject={
+  a:'aaaa',
+  b:'bbbb',
+  c:'cccc'
+}
+console.log(Object.keys(myObject))//this will return a array of my object's key
+//and we can access single key using [index] array indexing 
+console.log(Object.keys(myObject)[0])
+
+</script>
+<body>
+
+</body>
+</html>

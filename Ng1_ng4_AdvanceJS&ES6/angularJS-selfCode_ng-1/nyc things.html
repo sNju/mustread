@@ -1,0 +1,291 @@
+Configuration block – This block is executed during the provider registration and configuration phase. We can have these as many as we want in the application. Only providers and constants can be injected into configuration blocks and not instances. This block is used to inject module wise configuration settings to prevent accidental instantiation of services before they have been fully configured. This block is created using config() method.
+
+angular.module(myModule, []). 
+config(function (injectables) 
+{ 
+
+//.....
+
+}). 
+
+
+Run block – This is executed after the execution of configuration block. It inserts instances and constants but not providers. This block is created using run() method. This is similar to main method in C# or Java
+
+run(function (injectables) 
+{ 
+
+//....
+
+});
+
+
+while(noSuccess){
+tryAgain();
+if(Dead)
+break;
+}
+
+=====================
+eval makes it possible to execute (or evaluate) a string of javascript code.
+
+should not be used in javasctipt
+
+
+The best goal of using eval is to dynamically load code, generate code at runtime and do similar meta programming stuff. In general, if you can do the same without eval, don't use eval.
+===============
+get key of any object
+
+var foo = { 'alpha' : 'puffin', 'beta' : 'beagle' };
+var keys = [];
+for (var key in foo) {
+    keys.push(key);
+};
+console.log(keys);
+ ["alpha", "beta"]
+
+or 
+
+
+var foo = { 'alpha' : 'puffin', 'beta' : 'beagle' };
+
+console.log(Object.keys(foo))
+ ["alpha", "beta"]
+
+
+
+$httpParamSerializer
+
+Default $http params serializer that converts objects to strings according to the following rules:
+
+{'foo': 'bar'} results in foo=bar
+
+
+{
+  items: ['foo', 'bar', null]
+}
+is serialized to
+
+?items=foo&items=bar&items=null
+
+
+https://tinypng.com/
+======================
+http://jsfiddle.net/codef0rmer/83M34/?utm_source=website&utm_medium=embed&utm_campaign=83M34
+
+
+In short, “AngularJS when bootstrapped, looks for all the directives built-in as well as custom ones, compiles them using $compile() method
+
+http://jsfiddle.net/codef0rmer/2ZrX3/show/
+
+Object.keys() returns an array whose elements are strings corresponding to the enumerable properties found directly upon object. The ordering of the properties is the same as that given by looping over the properties of the object manually.
+
+var arr = ['a', 'b', 'c'];
+console.log(Object.keys(arr)); // console: ['0', '1', '2']
+
+
+==========================
+$$$$$$$$$$Location
+$location service parses the URL in the browser address bar.
+
+Methods
+absUrl();
+This method is getter only.
+
+Return full URL representation with all segments encoded according
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var absUrl = $location.absUrl();
+// => "http://example.com/#/some/path?foo=bar&baz=xoxo"
+
+
+url([url]);
+This method is getter / setter.
+
+Return URL (e.g. /path?a=b#hash) when called without any parameter.
+
+Change path, search and hash, when called with parameter and return $location.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var url = $location.url();
+// => "/some/path?foo=bar&baz=xoxo"
+
+protocol();
+This method is getter only.
+
+Return protocol of current URL.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var protocol = $location.protocol();
+// => "http"
+
+host();
+This method is getter only.
+
+Return host of current URL.
+
+Note: compared to the non-AngularJS version location.host which returns hostname:port, this returns the hostname portion only.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var host = $location.host();
+// => "example.com"
+
+// given URL http://user:password@example.com:8080/#/some/path?foo=bar&baz=xoxo
+host = $location.host();
+// => "example.com"
+host = location.host;
+// => "example.com:8080"
+
+
+port();
+This method is getter only.
+
+Return port of current URL.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var port = $location.port();
+// => 80
+
+
+path([path]);
+This method is getter / setter.
+
+Return path of current URL when called without any parameter.
+
+Change path when called with parameter and return $location.
+
+Note: Path should always begin with forward slash (/), this method will add the forward slash if it is missing.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var path = $location.path();
+// => "/some/path"
+
+
+search(search, [paramValue]);
+This method is getter / setter.
+
+Return search part (as object) of current URL when called without any parameter.
+
+Change search part when called with parameter and return $location.
+
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo
+var searchObject = $location.search();
+// => {foo: 'bar', baz: 'xoxo'}
+
+// set foo to 'yipee'
+$location.search('foo', 'yipee');
+// $location.search() => {foo: 'yipee', baz: 'xoxo'}
+
+
+hash([hash]);
+This method is getter / setter.
+
+Returns the hash fragment when called without any parameters.
+
+Changes the hash fragment when called with a parameter and returns $location.
+// given URL http://example.com/#/some/path?foo=bar&baz=xoxo#hashValue
+var hash = $location.hash();
+// => "hashValue"
+
+
+location.assign("http://www.mozilla.org");//redirect to a new url
+location.reload(true); //reloading the current page
+To reload the page after changing the URL, use the lower-level API, $window.location.href
+=========================
+
+/////////
+the btoa() method encodes a string in base-64.
+var encodedData = window.btoa('Hello, world'); // encode a string//result>>>SGVsbG8sIHdvcmxk
+
+console.log(window.btoa('Hello, world')); // encode a string
+>>>SGVsbG8sIHdvcmxk
+/////////
+The atob() method decodes a base-64 encoded string.
+var decodedData = window.atob(encodedData); // decode the string//result>>>Hello, world
+
+console.log(window.atob('SGVsbG8sIHdvcmxk')); // decode the string
+>>>Hello, world
+//////////
+Base64 is a group of similar binary-to-text encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation
+
+Base64 encoding schemes are commonly used when there is a need to encode binary data that needs to be stored and transferred over media
+
+
+Base64 is encoding that allows files or data to be embedded in media that otherwise does not allow certain data. For example, binary files, such as images, often contain bytes that can interrupt an e-mail transmission, so attachments are often base64-encoded (using MIME) for a friendlier format. This format only contains the ASCII characters 'A' through 'Z' (upper and lower case), digits '0' through '9', symbols '+', '/', and '=' for padding. This adds up to 64 different values, hence the name base64. Base64 encoded data must be decoded for the computer to understand the original data.
+
+
+Base-64 encoding is a way of taking binary data and turning it into text so that it's more easily transmitted in things like e-mail and HTML form data.
+
+MIME
+Short for Multipurpose Internet Mail Extensions, MIME is a standard format first defined in 1992 that allows the attachment and sending of non-text files (e.g. compressed file, sound file, graphic file, document file, or video file) in an e-mail message.
+
+
+
+decode- इलेक्ट्रनिक संकेत का अर्थ निकालना
+encode- सांकेतिक शब्दों में बदलना
+encryption-कूटलेखन or गूढ़लेखन
+decryption-विकोडन
+
+============================
+Difference between get and post method.
+
+Http protocol mostly use either get() or post() methods to transfer the request.
+
+Get method	Post method
+1	Request sends the request parameter as query string appended at the end of the request.	Post request send the request parameters as part of the http request body.
+2	Get method is visible to every one (It will be displayed in the address bar of browser ).	Post method variables are not displayed in the URL.
+3	Restriction on form data, only ASCII characters allowed.	No Restriction on form data, Binary data is also allowed.
+4	Get methods have maximum size is 2000 character.	Post methods have maximum size is 8 mb.
+5	Restriction on form length, So URL length is restricted	No restriction on form data.
+6	Remain in browser history.	Never remain the browser history.
+==================
+good things
+https://www.quora.com/What-is-the-best-way-to-learn-AngularJS-2
+
+
+read this 
+http://www.ng-newsletter.com/25-days-of-angular/day-24
+
+
+debugging
+You can pause the execution of your code and step through it line by line, function by function. And while it's stopped, you can look at every variable currently known to see what it contains.
+
+
+https://www.youtube.com/watch?v=WJXgXZ-reZ4
+
+read these articals
+
+https://stackoverflow.com/users/4703663/richard-hamilton#
+=========================
+
+http://jsfiddle.net/codef0rmer/83M34/?utm_source=website&utm_medium=embed&utm_campaign=83M34
+
+
+In short, “AngularJS when bootstrapped, looks for all the directives built-in as well as custom ones, compiles them using $compile() method
+
+http://jsfiddle.net/codef0rmer/2ZrX3/show/
+
+Object.keys() returns an array whose elements are strings corresponding to the enumerable properties found directly upon object. The ordering of the properties is the same as that given by looping over the properties of the object manually.
+
+var arr = ['a', 'b', 'c'];
+console.log(Object.keys(arr)); // console: ['0', '1', '2']
+=================
+if we want to run any phases before compiling then we use in (config phase) and if we want to run any phase after compiling then we use run phase and these code will be run only once in the run time (bootstraping time or we can say compiling time) of application. 
+=================
+
+  read this page
+http://zenrays.com/free-software-training-course-videos-bangalore
+
+
+https://stackoverflow.com/questions/16529825/angularjs-ngclass-conditional
+
+
+http://jsfiddle.net/ms403Ly8/2/
+
+newchanges
+search21apr
+newhomedesign
+designstage
+
+==========
+Async tags load the scripts while the rest of the page loads, but this means scripts can be loaded out of order. Basically, lighter files load first. This might be fine for some scripts, but can be disastrous for others.
+The defer attribute loads your scripts after your content has finished loading. It also runs the scripts in order. Just make sure your scripts run so late without breaking your site.

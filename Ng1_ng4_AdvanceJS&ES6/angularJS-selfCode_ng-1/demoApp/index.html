@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="demoApp">
+<html lang="en">
+
+<head>
+  <!-- <base href="/"> -->  <!-- this tag for base removing hash form url --> 
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" href="libcss/bootstrap.min.css">
+    <link rel="stylesheet" href="libcss/ngToast.min.css">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="libsJs/angular.min.js"></script>
+    <script src="libsJs/angular-ui-router.min.js"></script>
+	<script src="libsJs/angular-animate.min.js"></script>
+    <script src="libsJs/angular-sanitize.min.js"></script>
+    <script src="libsJs/ngToast.min.js"></script>
+    <script src="libsJs/ocLazyLoad.js"></script>
+
+    
+    <script src="js/app.js"></script>
+    <script src="controller/header.js"></script>
+    <script src="controller/rootCtrl.js"></script>
+    <script src="controller/bodyCtrl.js"></script>
+
+</head>
+
+<body  ng-controller="rootCtrl">
+<header></header>
+
+<div class="container">
+    <div ui-view></div>
+</div>
+
+<toast></toast>
+</body>
+</html>

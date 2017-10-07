@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input type="text" placeholder='search data'" id="searchValue" onkeyup="searchData()">
+<button onclick="ascending()">ascendingString</button>
+<button onclick="descending()">descendingString</button>
+<p id="searchData"></p>
+<p id="finalData"></p>
+<br/>
+<br/>
+<br/>
+<br/>
+<button onclick="ascendingString()">ascendingString</button>
+<button onclick="descendingString()">descendingString</button>
+<p id="PrintStringData"></p>
+
+<button onclick="ascendingNo()">ascendingNo</button>
+<button onclick="descendingNo()">descendingNo</button>
+<p id="PrintNoData"></p>
+<script>
+
+var dataString='hi my name is sanjay abcd is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.';
+var newString;
+document.getElementById("searchData").innerHTML = dataString;
+
+function searchData(){
+var getValue=document.getElementById("searchValue").value;
+var getValueLength=getValue.length;
+var x=dataString.indexOf(getValue);
+	if(x == -1){ 
+		x='value not found';
+		document.getElementById("finalData").innerHTML = x;
+	}
+	else{
+	newString=dataString.substr(parseInt(x),parseInt(getValueLength));
+	document.getElementById("finalData").innerHTML = newString;
+	}
+}
+
+function ascending(){
+	var y=newString.split('');
+	var z=y.sort();
+	document.getElementById("finalData").innerHTML = z.join('');
+
+}
+function descending(){
+	var a=newString.split('').sort().reverse().join('');
+	document.getElementById("finalData").innerHTML = a;
+
+}
+
+var stringData = ["A", "E", "F","C", "B", "D","G"];
+document.getElementById("PrintStringData").innerHTML = stringData;
+
+function ascendingString() {
+   stringData.sort();
+    document.getElementById("PrintStringData").innerHTML = stringData;
+}
+
+function descendingString() {
+   stringData.sort();
+    document.getElementById("PrintStringData").innerHTML = stringData.reverse();
+}
+    
+
+
+
+var numberData=[1,23,4,5,6,7,7,8];
+document.getElementById("PrintNoData").innerHTML = numberData;
+
+function ascendingNo(){
+	numberData.sort(function(a,b){
+	return a-b
+	});
+	document.getElementById("PrintNoData").innerHTML = numberData;
+}
+
+function descendingNo(){
+	numberData.sort(function(a,b){
+	return b-a
+	});
+document.getElementById("PrintNoData").innerHTML = numberData;
+}
+
+</script>
+
+</body>
+</html>

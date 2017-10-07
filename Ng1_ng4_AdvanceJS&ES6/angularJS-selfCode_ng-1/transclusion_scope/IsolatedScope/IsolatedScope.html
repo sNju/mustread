@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl',function($scope){
+  $scope.a=10;
+});
+
+app.directive('message1',function(){
+	return{
+    transclude:true,
+    templateUrl:'url.html',
+    scope:{},
+    controller:function($scope,$element,$attrs){
+      $scope.b=20;
+    }
+  }
+});
+
+</script>
+
+<body ng-app="myApp">
+  <div ng-controller="myCtrl">
+  this is called isolated scope we create these type of scope using (scope:{}) we can not inherit data and cannot share data this will create their own scope neither inherit nor share.<br/><br/>
+  this is controller text.....a={{a}} and b={{b}}
+
+      <message1>
+        		<p>this is transclsion text......a={{a}} and b={{b}} we can access it's parent scope using $parent b={{$parent.b}}</p>
+      </message1>
+</body>
+</html>

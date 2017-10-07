@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="ascendingSortttt()">click here to sort array ascending</button>
+<button onclick="descendingSortttt()">click here to sort array descending</button>
+<p id="demo"></p>
+<script>
+function ascendingSort(array) {
+  var next2last = array.length - 1;
+  array.forEach(function() {
+   // var isNotSwapped = true;
+    for (var index = 0; index < next2last; index += 1) {
+      var nextIndex = index + 1;
+      if (array[index] > array[nextIndex]) {
+        var holder = array[nextIndex];
+        array[nextIndex] = array[index];
+        array[index] = holder;
+      //  isNotSwapped = false;
+      }
+    }
+   // return isNotSwapped;
+  });
+}
+
+function descendingSort(array) {
+  var next2last = array.length - 1;
+
+  array.forEach(function() {
+    for (var index = 0; index < next2last; index += 1) {
+
+      var nextIndex = index + 1;
+      if (array[index] < array[nextIndex]) {
+        var holder = array[nextIndex];
+        array[nextIndex] = array[index];
+        array[index] = holder;
+        //console.log(array[index]);
+      }
+    }
+  });
+}
+
+var numbers = [9,12, 10, 15, 11, 14, 13, 16,12];
+//console.log(numbers[numbers.length-1],numbers.length);
+//var numbers = ['ab','abc','acb','aac'];
+
+document.getElementById("demo").innerHTML = numbers;
+
+function ascendingSortttt() {
+    ascendingSort(numbers);
+    document.getElementById("demo").innerHTML = numbers;
+}
+
+function descendingSortttt() {
+    descendingSort(numbers);
+    document.getElementById("demo").innerHTML = numbers;
+}
+
+</script>
+</body>
+</html>

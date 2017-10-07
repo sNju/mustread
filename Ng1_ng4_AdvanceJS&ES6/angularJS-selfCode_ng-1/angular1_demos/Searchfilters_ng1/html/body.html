@@ -1,0 +1,29 @@
+<div class-name="card-load-quarter fade" class="card-load-quarter" ng-repeat="profile in getData track by $index" infinite-scroll="loadMore()">
+  <div class="gp-card"> 
+    <a href="{{profile.party.gpurl}}">
+      <div class="card-zoom">
+        <div class="card-figure removeClass" style="background-image: url('{{profile.party.banner}}');">  
+        </div>
+        <div class="deal">
+          <p class="text-uppercase">hot deal</p>
+        </div>
+        <div class="overbox">
+          <div class="status"> 10 hours  </div>
+        </div>  
+      </div>
+    </a>
+    <div class="card-type">   
+      <div class="profileTitle">
+        <a ng-href="">
+          <h4 class="card-title">
+            {{profile.party.title}}
+          </h4>
+          <p class="party-location">{{profile.party.address}}</p>
+        </a>      
+      </div>
+      <div class="date-likes-panel">  
+        <button class="btn btn-book"><span>Book</span></button> 
+      </div>
+    </div>      
+  </div>
+</div>

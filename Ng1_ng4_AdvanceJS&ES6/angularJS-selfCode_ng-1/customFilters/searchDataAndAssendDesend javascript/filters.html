@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl',function($scope){
+$scope.data=[9,2,4,3,5,7,6,1];
+
+});
+
+//simple filter which adds a $ sign
+app.filter('addDoller',function(){
+  return function(mainInputValue,cesondParams,thirdParams){
+    if(cesondParams){
+      return mainInputValue/thirdParams + ' ' + ' this is second parameter(otherParams)if it is true(third parameter also this is awesome)';
+    }
+    else{
+     return '$'+mainInputValue;
+    }
+  }
+});
+
+app.filter('ascendingFilter',function(){
+  return function(thisTakesInput){
+    return thisTakesInput.sort();
+  }
+})
+
+app.filter('descendingFilter',function(){
+  return function(haha){
+    return haha.sort().reverse();
+  }
+})
+
+
+
+</script>
+
+<body>
+  <div ng-app="myApp" ng-controller="myCtrl">
+<ul>
+<li ng-repeat='x in data | ascendingFilter '>ascending array {{x | addDoller:true:10}}</li>
+</ul>
+
+<ul>
+<li ng-repeat='x in data | ascendingFilter '>ascending array {{x | addDoller}}</li>
+</ul>
+<ul>
+<li ng-repeat='x in data | descendingFilter'>descending array {{x | addDoller}}</li>
+</ul>
+</body>
+</html>

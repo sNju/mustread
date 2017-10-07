@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+//clouser
+
+// var addTo=function(passed){
+// 	var num=3;
+// 	return passed+num;
+// }
+
+// console.log(addTo(3));
+
+// // same thing i can do like this
+// var passed=3;//i will just create a var outside and pass that variable in function
+
+// var addTo=function(){
+// 	var num=3;
+// 	return passed+num;
+// };
+// console.log(addTo());
+// console.dir(addTo);//check it now you using dir you will see a clouser
+
+//example of clouser
+
+var addTo=function(passed){
+	var add=function(inner){
+		return inner+passed;
+	}
+	return add;
+}
+console.dir(addTo(3));//check now clouse is 3 here passed is a clouser
+
+var addThree=new addTo();
+consol.dir(addThree)
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<span id="message"></span>
+<script>
+// function generateRandomNumber () {
+//   return new Promise(function (resolve, reject) {
+//     var randomNumber = Math.floor((Math.random() * 10) + 1)
+//     if (randomNumber <= 5) {
+//       resolve(randomNumber)
+//     } else {
+//       reject(randomNumber)
+//     }
+//   })
+// }
+
+// generateRandomNumber().then(function(result) {
+//   document.getElementById('message').innerHTML = 'Success: ' + result
+// }).catch(function(error) {
+// 	document.getElementById('message').innerHTML = 'Error: ' + error
+// })
+
+
+//example of promise
+let promiseTOCleanTheRoom= new Promise(function(resolve,reject){
+  //cleaning the room
+let clean='room is clean';
+let notClean='room is clean';
+
+let isClean=false;
+    if(isClean){
+      resolve(clean);
+    }
+    else{
+      reject(notClean);
+    }
+});
+promiseTOCleanTheRoom.then(function(resultData){
+     document.getElementById('message').innerHTML = 'Success: ' + resultData;
+}).catch(function(resultData){
+     document.getElementById('message').innerHTML = 'error: ' + resultData;
+});
+</script>

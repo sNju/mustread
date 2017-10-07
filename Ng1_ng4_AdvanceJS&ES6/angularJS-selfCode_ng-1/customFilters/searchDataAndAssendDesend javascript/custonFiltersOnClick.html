@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+<script>
+var app = angular.module('filterApp', []);
+
+app.filter('ascendingFilter',function(){
+  return function(thisTakesInput){
+    return thisTakesInput.sort();
+  }
+});
+
+app.filter('descendingFilter',function(){
+  return function(haha){
+    return haha.sort().reverse();
+  }
+})
+
+app.controller('filterCtrl', function($scope, $filter){
+	$scope.data=[9,2,4,3,5,7,6,1];
+//  $scope.data=['thisis','hehe','haha','hoho','hihihi','thiswillbe','buthow'];
+
+    $scope.convertAscending = function(){
+      var ascending =  $filter('ascendingFilter')($scope.data);
+      $scope.data = ascending;
+    }
+    
+    $scope.convertdescending = function(){
+      var descending =  $filter('descendingFilter')($scope.data);
+      $scope.data = descending;
+    }
+
+});
+
+</script>
+
+<body>
+<div ng-app="filterApp" ng-controller="filterCtrl">
+
+<ul>
+<input type="button" ng-click="convertAscending()" value="convert ascending">
+<input type="button" ng-click="convertdescending()" value="convert descending">
+<li ng-repeat='x in data'>{{x}}</li>
+</ul>
+
+  </div>
+
+</body>
+</html>
+
+
+

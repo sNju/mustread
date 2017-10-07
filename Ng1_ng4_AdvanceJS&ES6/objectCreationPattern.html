@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+/*
+Object creation pattern
+Types
+
+1-Constructor pattern
+2-Factory pattern
+3-Prototype pattern
+4-Dynamic Prototype pattern
+*/
+
+// 1-Factory pattern
+
+// functions are more suitable for creating other objects because the behave more like classes when we define
+
+var peopleFactory= function(name,age,state){
+
+	var temp={}
+	// var temp=new Object();//same thing
+
+	temp.name=name;
+	temp.age=age;
+	temp.state=state;
+	temp.printPerson=function(){
+		console.log(this.name + ', ' + this.age + ', ' + this.state);
+	}
+	return temp;
+
+}
+
+var person1=new peopleFactory('sanju','23','nainital');
+var person2=new peopleFactory('pinky','23','nainital');
+
+person1.printPerson();
+person2.printPerson();
+
+person1.laugh='factoryPatter'//how to update a new property
+console.log(person1.laugh)
+
+
+// 2-Constructor pattern
+
+var peopleConstructer=function(name,age,state){
+
+	this.name=name;
+	this.age=age;
+	this.state=state;
+	this.printPerson=function(){
+		console.log(this.name + ', ' + this.age + ', ' + this.state + this.hi);
+	};
+};
+
+peopleConstructer.prototype.hi='hiiiiiiiiiiiiiiii';//this will update the new property in main object
+
+var person1=new peopleConstructer('sanjusanju','2323','nainitalnainital');
+var person2=new peopleConstructer('pinkypinky','2323','nainitalnainital');
+
+person1.hi='hiiiiiiiiiiiiiiiii';//this will update in person1 only not in main object
+
+person1.printPerson();
+person2.printPerson();
+
+person1.laugh='constructorPatter';//how to update a new property
+console.log(person1.laugh)
+
+
+//3-Prototype pattern
+
+
+// Every JavaScript object has a prototype. The prototype is also an object.
+
+// All JavaScript objects inherit their properties and methods from their prototype.
+
+
+var peopleProto=function(){
+
+};
+//every object get a shared space called prototype
+peopleProto.prototype.name='no name';
+peopleProto.prototype.age='no age';
+peopleProto.prototype.state='nainital';
+peopleProto.prototype.printPerson=function(){
+		console.log(this.name + ', ' + this.age + ', ' + this.state);
+}
+var person1=new peopleProto();
+
+person1.printPerson();//this will show previous detail
+//we can override these property
+person1.name='haha';//if i don't update name here this use it's default name previous updated name 
+person1.age='1234567689';
+person1.state='hahahahahahah';
+
+
+person1.printPerson();//now we have override our detail this will be updated now
+
+person1.what='new property updated';//how to update a new property
+console.log(person1.what)
+
+
+console.log('name' in person1);// if i check return true
+//also we can check the property like this
+console.log(person1.hasOwnProperty('name'));
+
+//here we can create thousend object from person1 and will be lightwaight
+
+
+
+</script>
+
+</body>
+</html>

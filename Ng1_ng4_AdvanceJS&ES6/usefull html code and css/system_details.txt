@@ -1,0 +1,27 @@
+account
+gmail
+sanjay.kumar@goparties.com
+goparties@123
+
+slack
+sanjay.kumar@goparties.com
+goparties@123
+
+everything is same
+
+
+acko.net
+
+my branch
+homedemo
+
+new branch for responsive
+responsiveHome
+
+new branch for responsivev2
+homeResponsive V2
+
+
+new branch for admin
+adminV2
+

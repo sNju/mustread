@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+	var app = angular.module("myApp",[]);
+app.controller("toDolist",["$scope",function($scope) {
+	$scope.tasks = [];
+	$scope.action = "Add";
+	$scope.editIndex = -1;
+	$scope.title = "";
+	// $scope.loadtime=function(){
+	// 	localStorage.setItem("updateData", JSON.stringify($scope.tasks));
+	// 	console.log(localStorage.getItem("updateData"));
+	// 	$scope.tasks=JSON.parse(localStorage.getItem("updateData"));
+	// 
+	// }
+$scope.add = function(){
+	if($scope.title == "") {
+		alert("enter something")
+		return;
+	}
+		
+	// check if we have to update something
+	if($scope.editIndex!=-1) {
+		$scope.update();
+	} else {
+		$scope.tasks.push($scope.title);
+		console.log('check');
+		$scope.title = "";
+
+		// localStorage.setItem("updateData", JSON.stringify($scope.tasks));
+		// console.log(localStorage.getItem("updateData"));
+	}
+}	
+$scope.delete = function(){
+	 $scope.tasks.splice(this.$index, 1);
+	 // $scope.tasks.pop(this.$index,1);
+}
+$scope.update = function() {
+    $scope.tasks[$scope.editIndex] = $scope.title;
+    $scope.action = "Add";
+    $scope.editIndex = -1;
+    $scope.title = "";
+}
+
+$scope.edit = function() {
+	$scope.editIndex = this.$index;
+	$scope.title = $scope.tasks[this.$index];
+	$scope.action = "Update";
+}
+}])
+</script>
+<body ng-app = "myApp">
+<h2>To do list</h2>
+<p>Enter items to do :</p>
+<div ng-controller = "toDolist">
+<!-- <input  ng-model="title" placeholder="enter name"> -->
+<form  ng-submit="add()">
+	<input  ng-model="title" placeholder="enter name"></input>
+	<button ng-bind="action"></button>
+</form>
+<!-- <button ng-click = "add()">Add</button> -->
+	<ul>
+		<li ng-repeat = "x in tasks track by $index" >{{x}}<button ng-click="delete()">del</button> <button ng-click="edit()" >edit</button> </li>
+		
+	</ul>
+</div>
+
+</body>
+</html>

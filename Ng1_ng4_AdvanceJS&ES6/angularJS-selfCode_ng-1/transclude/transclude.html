@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl',function($scope){
+  $scope.console='hahahaha';
+  console.log($scope.console);
+});
+
+//using ng-transclude
+app.directive('trnsDrct',function(){
+	return{
+		restrict:'EA',  
+    transclude:true,
+    templateUrl:'url.html'
+  }
+});
+
+//using link function
+// app.directive('trnsDrct',function(){ 
+//   return{
+//     transclude:true,
+//     templateUrl:'url.html',
+//     link:function(scope,iElement,iAttrs,controller,transclude){ //iElement instant element 
+//       var content=transclude();
+//       iElement.find('#haha').append(content);
+//     }
+//   }
+// });
+
+
+//using directive controller
+// app.directive('trnsDrct',function(){ 
+//   return{
+//     transclude:true,
+//     templateUrl:'url.html',
+//     controller:function($scope,$element,$attrs,$transclude){ //iElement instant element 
+//       var content=$transclude();
+//       $element.find('#haha').append(content);
+//     }
+//   }
+// });
+
+//using my own transclude directive
+// app.directive('trnsDrct',function(){ 
+//   return{
+//     transclude:true,
+//     templateUrl:'url.html',
+//   }
+// });
+////using my own ng-transclude directive - "my-transclude"
+// app.directive('myTransclude',function(){
+//   return{
+//     link:function(scope,iElement,iAttrs,controller,transclude){
+//       iElement.append(transclude());
+//     }
+//   }
+// })
+
+
+</script>
+
+<body>
+  <div ng-app="myApp" ng-controller="myCtrl">
+
+  <trns-drct>
+    		<p>this is inner text</p>
+  </trns-drct>
+</body>
+</html>

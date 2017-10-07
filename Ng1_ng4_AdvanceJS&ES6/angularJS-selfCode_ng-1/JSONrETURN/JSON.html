@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.directive('drct',function(){
+	return{
+		restrict:'EA',
+		controller:function($scope, $http) {
+  $http({
+    method : "GET",
+    url : "json.json"
+  })
+  .then(function mySuccess(response) {
+      $scope.myWelcome = response.data;
+      console.log('asdf');
+    },
+   function myError(response) {
+      $scope.myWelcome = response.statusText;
+	})
+  }
+}
+});
+</script>
+
+<body>
+<div ng-app="myApp">
+
+	<div drct>
+	<div ng-repeat="x in myWelcome">
+		<h1>{{x.Name}} {{x.RollNo}}</h1>
+	</div>
+</div>
+
+</div>
+
+</body>
+</html>

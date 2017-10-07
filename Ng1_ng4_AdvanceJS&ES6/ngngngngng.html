@@ -1,0 +1,363 @@
+let a:number;
+let B:boolean;
+let a:string;
+let a:any;
+let a:number[]=[1,2,3];
+let a:any=[1,true,'asdf'];
+const colorRed=0;
+
+enum Color {Red=0,Green=1}
+let backgroundColor=Color.Red;
+
+
+
+interface Point{
+	x:number,
+	y:number,
+
+}
+
+let drawPoint=(point: Point) => {
+	//..
+}
+
+drawPoint({
+	x:1,
+	y:2
+})
+
+void     //void mean it doesn't return anything
+
+
+class Point{
+	
+	constructor(x:number,y:number){
+		this.x=x;
+		this.y=y;
+	}
+//	constructor(x?:number,y?:number){//if we make a parameter opetional //once we make the parameter optional all the other parameter on the right side of that parameter should also be optional//this is rule by typescript and lot of other programming languages  
+//		this.x=x;
+//		this.y=y;
+//	}
+
+
+//constructor(private x:number, private y:number){
+//		}
+
+//if we prefix the access modifire with the parameter with a private or public ts compiler will generate excate same name and it will also initialize this field with the value of this argument.
+//this is cool feature of ts 
+
+//if we use private then we can use get() and set() for change the property and get this is cool also with the same name
+
+
+
+	draw(){
+	console.log('x' + this.x + 'y' + this.y);
+	}
+
+}
+
+let point=new Point(2,3)
+//let point=new Point()//if we don't want to pass the arguments here we can use ? means optional in constructor 
+point.draw
+
+
+//we make module and export,import them in other module for use
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+a component encapsulate the data,html,logic for view
+
+in service we import injectable service because of we inject other service on constructor
+
+/////////
+
+adding bootstrap
+npm install bootstrap --save
+
+after that it will be install in package.json
+
+and in style.css(global css)
+@import "~bootstrap/dist/css/bootsrtap.css";
+
+
+////////////////
+
+property binding
+title='asdfasdf';
+
+imageurl='/img.jpg'
+
+1- src={{imageurl}}
+2-[src]="imageurl"
+
+<p>{{title}}</p>
+<p [textContent]="title"></p>
+
+/////////////
+
+attribute binding
+
+haha=2;
+[attr.colspan]='haha';
+
+////////////
+class bindind
+
+isActive=true;
+[class.className]=isActive;
+
+//////////////
+style binding
+
+[style.backgroundColor]="(if true)?'red':'blue'"
+
+//////////
+event binding
+(click)=clickMe($event)//$event we can get all the property of click element
+
+/////////////
+for bubbling and capturing use
+
+$event.stopPropagation();
+
+// /////////
+event filtering
+something($event){
+	if($event.keyCode == 13 ){
+		alert('asdf');
+		}
+	}
+}
+
+(keyup)=something($event);
+
+instead of this we will simply use
+
+
+something(){
+		alert('asdf');
+}
+
+(keyup.enter)=something();
+
+/////////////////////
+template variables
+
+if we want to get the typed value of element
+
+one way using ($event.target.value)
+
+and other
+
+we declare a variable on element using #nameOfVar tag (this)
+
+and (nameOfVar.value)
+//////////////////////
+
+two way data binding
+
+email='sanju@gmail.col'
+
+onKeyUp(){
+	console.log(this.email)
+}
+
+<input [value]='email' (click)="email=$event.target.value;onKeyUp()>
+
+this is a way but this is not good
+use this instead
+
+[(ngModel)]=email;
+import {FormsModule} from '@angular/forms'
+and imports it on main module import arrya also
+////////////
+angular framwork consist of several different module in every module we have a bunch of building blocks of that are highly related(components,directive,pipes.etc....)these are highly related
+not every application need all the module in angular because when we bring all the module we increase the code size
+
+Module
+
+1-core
+2-forms
+3-animations
+
+and ngModule module comes in forms module and bydefault this is not imported in application
+
+////////////////////////////
+pipes in angular1 filters (|)
+
+custom  filter use ng g pipe name of pipe 
+pipeTransform()
+
+///////////////////
+component API
+
+in order to make a component more reuseable
+input and output property
+
+we use input property to pass input or state to a component
+we use output property to raise event from these custom component 
+
+
+inject (Input)
+and use 
+@Input() nameOfField:type
+and use it in component selector
+//or we can do same thing without import Input and in component (inputs:['nameOfInput']);//this is not good
+
+or we can use alise of input 
+@Input('name-of-field') nameOfField:type
+
+now this [name-of-field] in html //this is preferable because in future if nameOfField changes we need not to change it in html because this will take form input field prefer 
+///////////////////////////////////change all the same name of var use f2
+
+=====================================
+<p *ngIf="true; else somethingElse">print this if true</p>
+<ng-template #somethingElse>print this else</ng-template>
+
+or
+<p *ngIf="true; then firstTemp else secondTemp">print first if true</p>
+<ng-template #firstTemp>first temp</ng-template>
+<ng-template #secondTemp>second temp</ng-template>
+====================================
+//less
+LESS is a CSS pre-processor that enables customizable, manageable and reusable style sheet for website. LESS is a dynamic style sheet language that extends the capability of CSS. LESS is also cross browser friendly.
+
+variable using @
+@bg:#f4f4f4;
+
+then use like in less
+
+p{
+	color:@bg
+}
+
+/////////
+mixin
+.flex-center-h{
+	display: flex;	
+	display: -webkit-flex;
+	align-self: center;
+	-webkit-align-self:center;
+}
+
+then use like
+.flex-center-h()
+
+or
+#flex-center-h(){
+	display: flex;	
+	display: -webkit-flex;
+	align-self: center;
+	-webkit-align-self:center;
+}
+then use
+#flex-center-h;
+///////
+.RoundShape(@radius:50%) {
+    -webkit-border-radius:@radius;
+       -moz-border-radius:@radius;
+            border-radius:@radius;
+}
+
+then use
+.RoundShape()
+
+these are cool features
+
+//less
+h2 {
+   &:extend(.style);
+   font-style: italic;
+}
+
+.style {
+   background: green;
+}
+
+///css
+
+h2 {
+   font-style: italic;
+}
+
+.style,
+h2 {
+   background: blue;
+}
+
+//less
+.p1 {
+   color:red;
+}
+
+.p2 {
+   background : #64d9c0;
+   .p1();
+}
+///css
+.p1 {
+   color: red;
+}
+
+.p2 {
+   background: #64d9c0;
+   color: red;
+}
+/////////
+.border(@width; @style; @color) {
+   border: @width @style @color;
+}
+
+.myheader {
+   .border(2px; dashed; green);
+}
+
+=============================================================
+diff between for and forEach
+{
+	for is faster that foreach 
+
+	foreach for se bnaya gya h or sorter syntx we can say
+
+}
+
+
+map function use????and why main thing
+{
+iterate arry element and we can chane the array at same time with map function
+
+}
+
+
+
+
+injectable()
+
+@ what does it mean
+
+how to create custom component
+
+arrow function last output
+
+what output gives angular after compilation
+
+@input
+
+
+
+
+
+
+for form always use function click on submit 
+
+<form (submit)="submitquery()" ngNativeValidate>
+  <div class="form-group">
+    <input [(ngModel)]="name" type="text" class="form-control" placeholder="enter your name" name="userName" required>
+  </div>
+  <div class="form-group">
+    <input pattern="^\d{10}" [(ngModel)]="phone" name="userPhone" type="tel" class="form-control" placeholder="enter your phone no" required>
+  </div>
+  <button class="btn btn-app btn-request btn-block text-uppercase" type="submit">Submit</button>
+</form>
+
+
+

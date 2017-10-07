@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="clickMe()">click here to sort array</button>
+
+<p id="demo">Click the button to change the text in this paragraph.</p>
+
+<script>
+var numbers = [12, 10, 15, 11, 14, 13, 16];
+document.getElementById("demo").innerHTML = numbers;
+function bubbleSort(array) {
+  var next2last = array.length - 1;
+  array.forEach(function() {
+    var isNotSwapped = true;
+    for (var index = 0; index < next2last; index += 1) {
+      var nextIndex = index + 1;
+      if (array[index] > array[nextIndex]) {
+        var holder = array[nextIndex];
+        array[nextIndex] = array[index];
+        array[index] = holder;
+        isNotSwapped = false;
+      }
+    }
+    return isNotSwapped;
+  });
+}
+bubbleSort(numbers);
+console.log(numbers);
+function clickMe() {
+    document.getElementById("demo").innerHTML = numbers;
+}
+</script>
+
+</body>
+</html>

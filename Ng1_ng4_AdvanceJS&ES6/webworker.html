@@ -1,0 +1,13 @@
+<script>
+if(window.Worker){//checks if the webworkers functionality is available for this browser
+	var myWorker = new Worker("webWorkers.js");//all the worker code goes in this separate file
+
+	var message = {addThis:{num1:10,num2:2}};
+	myWorker.postMessage(message);
+	myWorker.onmessage=function(e){
+		console.dir(e.data.result);
+	}
+
+}
+
+</script>

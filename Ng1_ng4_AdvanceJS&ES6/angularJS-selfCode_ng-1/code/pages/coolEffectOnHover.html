@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.overlay-container{
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+  width: 100%;
+  height:100%;
+
+}
+.overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.overlay-content{
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  height: 75px;
+  transition: .5s ease;
+  opacity: .6;
+  padding: 15px;
+} 
+.slideUp{
+  position: relative;
+}
+.slideUp:hover .overlay-content {
+  height: 100%;
+}
+
+.bottomFixed{
+position: absolute;
+color: #000;
+bottom: 15px;
+left: 31px;
+z-index: 2;
+}
+
+
+</style>
+
+<style>
+.tooltip {
+    position: relative;
+    display: inline-block;
+    opacity: 1 !important;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+.toolTip{
+position: absolute;
+right: 38px;
+bottom: 15px;
+}
+</style>
+
+
+
+<body>
+
+<div class="container-fluid">
+<div class="row">
+
+
+
+<div class="col-sm-4" >
+      <div class="slideUp">      
+      <div class="bottomFixed">
+      <p>24 April 2017</p></div>
+      <div class="toolTip">
+      <p class="tooltip">Hover over me
+      <span class="tooltiptext"><a href="#" target="_blank">asd</a></span>
+      </p>
+
+      </div>
+
+
+
+
+        <img src="playboy-club-new-delhi-3.jpg" alt="Avatar" class="image">
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-content">
+              <div class="text">
+              <p>The Feelers That Go With Parties</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+<div class="col-sm-4" >
+      <div class="slideUp">      
+        <img src="playboy-club-new-delhi-3.jpg" alt="Avatar" class="image">
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-content">
+              <div class="text">Hello World</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+<div class="col-sm-4" >
+      <div class="slideUp">      
+        <img src="playboy-club-new-delhi-3.jpg" alt="Avatar" class="image">
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-content">
+              <div class="text">Hello World</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+</div>
+</div>
+
+</body>
+</html>

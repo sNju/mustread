@@ -1,0 +1,14 @@
+<nav class="navbar navbar-inverse" role="navigation" ng-controller="headerCtrl">
+    <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="index">logo main index</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="about">About</a></li>
+        <li><a ui-sref="guitar">myGuitar</a></li>
+        <li><a ui-sref="nested">nestedViews</a></li>
+        <li><a ui-sref="stateParams({a:{{x}},b:{{y}}})">$stateParams</a></li>
+        
+         <li><a ui-sref="stateParamsQuery({a:{{x}},b:{{y}}})">queryParams</a></li>
+    </ul> 
+</nav>

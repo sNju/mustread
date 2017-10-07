@@ -1,0 +1,73 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+<script src="angular.js"></script>
+<script>
+
+var app=angular.module('myApp',[])
+app.controller('myCtrl', function($scope){
+$scope.name='working fine'
+})
+
+app.directive('mainDiv',function($http){
+return{
+restrict:'E',
+link:function(scope,element,attributes){
+$http.get(attributes.resourse).success(function(response){
+$scope.rows=response.data;	
+});
+console.log('parent' + 'this will run last	' + attributes.hahaha);
+}
+ }
+})
+
+app.directive('myName',function(){
+return{
+restrict:'E',
+link:function(scope,element,attributes){
+console.log('child element' + 'this will run first');
+}
+ }
+})
+
+//start directive
+app.directive('myNameAnother',function(){
+   return{
+restrict:'E',
+link:{
+   pre:function(scope,element,attributes){
+console.log('preeeeeeeee'   + 'and we can change order with the help of pre and post');
+  },
+  post:function(scope,element,attributes){
+console.log('posttttttttttt');
+  }
+}
+    }
+ 
+});//end directive
+
+
+
+</script>	
+</head>
+<body ng-controller="myCtrl">
+<p>{{name}}</p>
+
+<main-div hahaha="root"	resourse="api.json">
+<p ng-repeat="dataaa in rows"></p>
+<p>parent but this will run in last because this is the parent element within this div all will be run first</p>
+
+<my-name hahaha="child">
+<p>child 1</p>
+</my-name>
+
+<my-name hahaha="child">
+<p>child 2 this will run on second</p>
+</my-name>
+
+<my-name-another>this will run after in sequence</my-name-another>
+
+</main-div>
+
+</body>
+</html>

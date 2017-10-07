@@ -1,0 +1,68 @@
+<!-- Directives -->
+<!-- <p [ngStyle]="myStyle">style attribute [ngStyle]</p>
+<p [hidden]="hide">checking with [hidden]</p>
+<button (click)="toggle_ngIf()">toggle-ngIf</button>
+<p *ngIf="ifcheck">checking with ngIf</p>
+
+<div [ngSwitch]="textColor">
+  <p *ngSwitchCase="'red'" style="color:red">this is red color</p>
+  <p *ngSwitchCase="'green'" style="color:green">this is red green</p>
+  <p *ngSwitchCase="'blue'" style="color:blue">this is red blue</p>
+</div>
+
+<ul>
+  <li *ngFor="let person of programmer">{{person.name}}---{{person.place}}</li>
+</ul> -->
+<!-- deleted this directive file -->
+<!-- <p CustomHover clickColor='pink'>this is custom Directive</p>
+<p CustomHover clickColor='yellow'>this is custom Directive and assign color name using input or by user on click event</p> -->
+<!-- <app-pipes></app-pipes> -->
+
+
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-pipes',
+  templateUrl: './pipes.component.html',
+  styleUrls: ['./pipes.component.css']
+})
+export class PipesComponent implements OnInit {
+
+  constructor() { }
+  pipeTiele='pipe example';
+  price=10;
+  amount=.1;
+  square=20;
+  
+  public today=new Date();
+
+  public programmer=[
+    {'name':'sanju','place':'nainital'},
+    {'name':'ajju','place':'ranikhet'},
+    {'name':'bhoj','place':'bhimtal'}
+  ]
+
+  
+  ngOnInit() {
+  }
+
+}
+
+
+<h1>{{pipeTiele | uppercase}}</h1>
+<h1>{{pipeTiele | titlecase}}</h1>
+<h1>{{pipeTiele | lowercase}}</h1>
+<h1>{{price | currency:'USD':true}}</h1>
+<!-- USD is standard currency format //second paramenter refer to standard and third parameter stands for symbol //bydefault it is false-->
+<h1>{{price | currency:'INR':true}}</h1>
+<h1>{{amount | percent}}</h1>
+<h1>today's daye is {{today}}</h1>
+<h1>today's daye is {{today | date}}</h1>
+<h1>today's daye is {{today | date:'medium'}}</h1>
+<h1>today's daye is {{today | date:'shortTime'}}</h1>
+<h1>today's daye is {{today | date:'mmss'}}</h1>
+<p>{{programmer | json | uppercase}}</p>
+<p>square of {{square}} is {{square | square}}</p>
+<p>square of {{price}} is {{price | square}}</p>
+
