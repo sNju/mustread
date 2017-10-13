@@ -1,0 +1,448 @@
+converts ES6 to ES5 using Traceur and/or Babel.
+
+object based
+
+GET:parameters are passed in the query string.max data 2k
+POST:parameters are passed in the request body.no limit
+
+READ
+https://www.youtube.com/watch?v=057Rs6CgJnY
+
+
+<script>
+=======================================================================================================================================
+														Scope and Let
+=======================================================================================================================================
+
+var age = 55;
+
+for (let i = 0; i < 5; i++) {
+    age += 5;
+}
+
+try {
+    console.log(i);
+} catch (e) {
+    console.log('i is out of scope due to using let!');
+}
+
+========================================================================================================================
+												Arrow Functions
+========================================================================================================================
+
+var myLogger = msg => console.log(msg); //Creates an anonymous function
+
+myLogger('Testing out arrow functions!');
+
+//Working with "this" the "old" way
+function Car() {
+    var self = this;
+    this._seats = 4; 
+
+    this.timeout = function() {
+        setTimeout(function() {
+            console.log(self._seats++);
+        }, 1000);
+    }
+}
+
+//Working with this using arrow functions
+class CarWithArrow {
+
+    constructor() {
+        this._seats = 6;
+    }
+
+    timeout() {
+        setTimeout(() => {
+            console.log(this._seats++);
+        }, 1000);
+    }
+}
+
+var c = new Car();
+c.timeout();
+var cArrow = new CarWithArrow();
+cArrow.timeout();
+
+
+============================================================================================================================
+											    Classes and Inheritance
+============================================================================================================================
+
+class BaseLog {
+    constructor() {
+        this.logName = 'Log1';
+    }
+
+    log(msg) {
+        console.log(this.logName + ': ' + msg);
+    }
+}
+
+class Logger extends BaseLog {
+
+    constructor(logName) {
+        super(logName);
+    }
+
+    writeLine(msg) {
+        super.log(msg + '\r\n');
+    }
+}
+
+ var logger = new Logger('MyLog');
+logger.writeLine('Logging via ES6 classes!');
+
+========================================================================================================
+										Destructuring
+=======================================================================================================
+
+//Old Way
+var values = [9.99, .50];
+var oldTotal = values[0],
+    oldTax = values[1];
+
+//New Way (Destructuring)
+var [total, tax] = [9.99, .50];
+var {total2, tax2} = {total:9.99, tax:.50};
+
+console.log('Destructuring an array.');
+console.log('Total: ' + total + ' Tax: ' + tax);
+
+console.log('\nDestructuring an object literal.');
+console.log('Total2: ' + total2 + ' Tax2: ' + tax2);
+
+var colors = ['red', 'yellow', 'green'],
+    redOld = colors[0],
+    yellowOld = colors[1],
+    greenOld = colors[2];
+
+var [red, yellow, green] = ['red', 'yellow', 'green'];
+console.log(`Destructuring colors: ${red} ${yellow} ${green}`);
+
+var [red2, , green2] = ['red', 'yellow', 'green'];
+console.log(`Destructuring with an ignore: ${red2} ${green2}`);
+
+console.log('\n');
+//Iteration and destructuring
+var pets = [
+  {
+      name: "Fido",
+      type: 'Dog',
+      treats: {
+          treat1: "Chewie",
+          treat2: "Chicken"
+      },
+      age: 10
+  },
+  {
+      name: "Maestro",
+      type: 'Dog',
+      treats: {
+          treat1: "Chew Stick",
+          treat2: "Turkey Chew"
+      },
+      age: 5
+  }
+];
+
+//Here's the destructuring breakdown:
+//name maps to an n variable
+//type maps to a t variables
+//treats maps treat 1 to t1 and treat2 to t2
+for (var {name: n, type: t, treats: { treat1: t1, treat2: t2 } } of pets) {
+  console.log(`${n} is a ${t} who likes ${t1} and ${t2} treats`);
+}
+
+======================================================================================================================================
+																Using Maps
+
+								Maps provide a way to store a collection of unique key/value pairs.
+=======================================================================================================================================
+
+//Simple example of Map
+var map = new Map();
+map.set('Finance','Process bills');
+map.set('HR', 'Human Resources and Healthcare');
+map.set('HR', 'Human Resources and Healthcare'); //Duplicate ignored
+console.log('Getting HR: ' + map.get('HR'));
+console.log(map.size);
+
+if (map.has('Finance')) console.log('Found it!');
+map.delete('Finance'); //Delete single item
+map.clear(); //Clear all items
+
+//Using Map
+class Departments {
+
+    constructor() {
+        this._depts = new Map();
+    }
+
+    addDepartment(key, desc) {
+        if (!this._depts.has(key)) {
+            this._depts.set(key, desc);
+        }
+        else {
+            console.log('Duplicate department was blocked: ' + key);
+        }
+    }
+
+    getDepartment(key) {
+        return this._depts.get(key);
+    }
+
+    removeDepartment(key) {
+        this._depts.delete(key);
+    }
+
+    clearDepartments() {
+        this._depts.clear();
+    }
+
+    getAll() {
+        return this._depts;
+    }
+}
+
+//No duplicate values allowed due to using Set
+var depts = new Departments();
+depts.addDepartment('Finance','Process bills');
+depts.addDepartment('HR', 'Human Resources and Healthcare');
+depts.addDepartment('Finance', 'Process the bills');
+
+let all = depts.getAll();
+
+//Iterate through the set
+all.forEach(function(val, key) {
+    console.log('Found department using forEach ' + key + ': ' + val);
+});
+
+console.log('\n');
+all.forEach((val, key) => console.log(key + ': ' + val));
+
+console.log('\n');
+for (let [key,val] of all) {
+    console.log('Found department using for of loop: ' + key + ': ' + val);
+}
+
+console.log('\nFinding specific HR key : ' + depts.getDepartment('HR'));
+
+depts.clearDepartments();
+console.log('\nClearing all departments: Size is now: ' + depts.getAll().size);
+
+
+=======================================================================================================================================
+														Using Sets
+							 Sets provide a way to store a set of items that are all unique.
+=======================================================================================================================================
+
+
+//Simple example of Set
+var set = new Set();
+set.add('HR');
+set.add('Finance');
+set.add('Finance'); //Duplicate ignored
+set.add({name: 'GIS', desc: 'Mapping'});
+console.log(set.size);
+if (set.has('Finance')) console.log('Found it!');
+set.delete('Finance'); //Delete single item
+set.clear(); //Clear all items
+
+
+//Using Set
+class Departments {
+
+    constructor() {
+        this._depts = new Set();
+    }
+
+    addDepartment(dept) {
+        if (!this._depts.has(dept)) {
+            this._depts.add(dept);
+        }
+        else {
+            console.log('Duplicate department was blocked: ' + dept);
+        }
+    }
+
+    removeDepartment(dept) {
+        this._depts.delete(dept);
+    }
+
+    clearDepartments() {
+        this._depts.clear();
+    }
+
+    getSet() {
+        return this._depts;
+    }
+}
+
+
+//Using Departments (which wraps a Set)
+var depts = new Departments();
+depts.addDepartment('HR');
+depts.addDepartment('Finance');
+depts.addDepartment('Finance');
+
+let allDepts = depts.getSet();
+
+//Iterate through the set
+allDepts.forEach(function(dept) {
+    console.log('Found department using forEach ' + dept);
+});
+
+console.log('\n');
+allDepts.forEach(dept => console.log('Found department using forEach ' + 
+                                'with arrow function: ' + dept));
+
+console.log('\n');
+for (let dept of allDepts) {
+    console.log('Found department using for of loop: ' + dept);
+}
+
+let val = allDepts.values().next().value;
+console.log(val);
+
+
+//Add current set into a new one using value
+console.log('\n');
+var values = allDepts.values;
+var depts2 = new Set(allDepts);
+depts2.forEach(function(dept) {
+    console.log('Iterating through depts2 values: ' + dept);
+});
+
+depts.clearDepartments();
+console.log('\nClearing all departments: Size is now: ' + depts.getSet().size);
+
+
+=======================================================================================================================================
+											WeakMap and WeakSet
+=======================================================================================================================================
+
+
+//Using WeakSet
+var weakset = new WeakSet();
+//No size, entries, or values
+//can't use forEach (not enumerable), can't mix types
+var person1 = { name: 'Fred' },
+    person2 = { name: 'Michelle' };
+
+weakset.add(person1);
+weakset.add(person2);
+
+if (weakset.has(person1)) console.log('Found person!');
+weakset.delete(person2); //Delete single item
+
+
+//Using WeakMap
+var weakmap = new WeakMap();
+//No size, entries, or values
+//can't use forEach (not enumerable), key must be an object
+var person1 = { name: 'Fred' },
+    person2 = { name: 'Michelle' },
+    key1 = {key: '123'},
+    key2 = {key: '321'};
+
+weakmap.set(key1, person1);
+weakmap.set(key2, person2);
+
+var person = weakmap.get(key2);
+console.log('Map has person key 321: ' + person.name);
+
+if (weakmap.has(key1)) console.log('Found person!');
+weakmap.delete(key2); //Delete single item
+
+
+
+========================================================================================================================================
+														ES6 Parameters
+========================================================================================================================================
+
+class Car {
+
+    currentYear() {
+        return new Date().getFullYear();
+    }
+   
+    //The year parameter is a "default parameter"
+    setDetails(make = 'No Make', model = 'No Model', year = this.currentYear(), ...accessories) {
+        console.log(make + ' ' + model + ' ' + year);  
+        if (accessories) {
+            for (var i = 0; i < accessories.length; i++) {
+                console.log('\n' + accessories[i]);
+            }
+        }
+    }
+
+}
+
+
+var car = new Car();
+//Testing default parameters
+car.setDetails('Toyota', 'Tundra');
+car.setDetails();
+
+//Testing rest parameters
+car.setDetails('Toyota', 'Tundra', 2015, 'sunroof', '4X4', '4-door');
+
+
+
+=======================================================================================================================================
+											Template Strings
+=======================================================================================================================================
+
+
+class Car {
+    constructor(make, model, engine, price) {
+        this._make = make;
+        this._model = model;
+        this._engine = engine;
+        this._price = price;
+        this._taxRate = .08;
+    }
+
+    get make() {
+        return this._make;
+    }
+
+    get model() {
+        return this._model;
+    }
+
+    get engine() {
+        return this._engine;
+    }
+    
+    start() {
+        //Use a template string
+        return `${this.make} ${this.model} with a 
+                ${this.engine} engine is started!`;
+    }
+
+    getTotal() {
+        return `Total cost is: ${(this._price * this._taxRate) + 
+                this._price}`;
+    }
+}
+
+function log(msg) {
+    console.log(msg);
+}
+
+const car = new Car('Chevy','Malibu','V6', 30000);
+log('Car engine type: ' + car.engine);
+log(car.start());
+log(car.getTotal());
+
+
+=======================================================================================================================================
+											
+=======================================================================================================================================
+
+
+
+</script>
